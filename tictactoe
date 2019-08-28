@@ -17,6 +17,7 @@ class Main {
     for(;;) {
       System.out.println("enter a number ");
       y.X();
+      y.win();
       o.xChecker();
 
       for(int i = 1; i < 4; i++) {
@@ -26,69 +27,224 @@ class Main {
         System.out.println();
       }
 
+       if(yep.won == true) {
+        break;
+      }
+
     }
   }
 }
 
 class yep {
+
+  static boolean one = false;
+  static boolean two = false;
+  static boolean three = false;
+  static boolean four = false;
+  static boolean five = false;
+  static boolean six = false;
+  static boolean seven = false;
+  static boolean eight = false;
+  static boolean nine = false;
+
+  static boolean won = false;
+
   void X() {
     Scanner input = new Scanner(System.in);
     int number = input.nextInt();
 
     if(number == 1) {
       Main.yeet[1][1] = 'X';
+      one = true;
     }
     if(number == 2) {
       Main.yeet[1][2] = 'X';
+      two = true;
     }
     if(number == 3) {
       Main.yeet[1][3] = 'X';
+      three = true;
     }
     if(number == 4) {
       Main.yeet[2][1] = 'X';
+      four = true;
     }
     if(number == 5) {
       Main.yeet[2][2] = 'X';
+      five = true;
     }
     if(number == 6) {
       Main.yeet[2][3] = 'X';
+      six = true;
     }
     if(number == 7) {
       Main.yeet[3][1] = 'X';
+      seven = true;
     }
     if(number == 8) {
       Main.yeet[3][2] = 'X';
+      eight = true;
     }
     if(number == 9) {
       Main.yeet[3][3] = 'X';
+      nine = true;
     }
   }
+
+  void win() {
+    if(one == true && five == true && nine == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(three == true && five == true && seven == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(one == true && four == true && seven == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(two == true && five == true && eight == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(three == true && six == true && nine == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(one == true && two == true && three == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(four == true && five == true && six == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+    if(seven == true && eight == true && nine == true) {
+      System.out.println("YOU WIN!");
+      won = true;
+    }
+  }
+
 }
 
 class opponent extends yep {
   
   void xChecker() {
-    for(int row = 0; row < 3; row++) {
-      for(int column = 0; column < 3; column++) {
-          if(Main.yeet[row][column] == 'X') {
-              if(Main.yeet[row+1][column] == 'X' && Main.yeet[row+2][column] != 'X' && Main.yeet[row+2][column] != 'T') {
-                  Main.yeet[row+2][column] = 'O';
-              } else if(Main.yeet[row-1][column] == 'X' && Main.yeet[row-2][column] != 'X' && Main.yeet[row-2][column] != 'T') {
-                  Main.yeet[row-2][column] = 'O';
-              } else if(Main.yeet[row][column+1] == 'X' && Main.yeet[row][column+2] != 'X' && Main.yeet[row][column+2] != 'T') {
-                  Main.yeet[row][column+2] = 'O';
-              } else if(Main.yeet[row][column-1] == 'X' && Main.yeet[row][column-2] != 'X' && Main.yeet[row][column-2] != 'T') {
-                  Main.yeet[row][column-2] = 'O';
-              } else if (Main.yeet[row+1][column+1] == 'X' && Main.yeet[row+2][column+2] != 'X' && Main.yeet[row+2][column+2] != 'T') {
-                Main.yeet[row+2][column+2] = 'O';
-              } else if (Main.yeet[row-1][column-1] == 'X' && Main.yeet[row-2][column-2] != 'X' && Main.yeet[row-2][column-2] != 'T') {
-                Main.yeet[row-2][column-2] = 'O';
-              } 
-            } else {
-              
-            }
-       }
-    }
-  }
 
+    
+    //diagonals
+    if(one == true && five == true && nine == false) {
+      Main.yeet[3][3] = 'O';
+    }
+
+    else if(one == false && five == true && nine == true) {
+      Main.yeet[1][1] = 'O';
+    }
+
+    else if(one == true && five == false && nine == true) {
+      Main.yeet[2][2] = 'O';
+    }
+
+    else if(three == true && five == true && seven == false) {
+      Main.yeet[3][1] = 'O';
+    }
+
+    else if(three == false && five == true && seven == true) {
+      Main.yeet[1][3] = 'O';
+    }
+
+    else if(three == true && five == false && seven == true) {
+      Main.yeet[2][2] = 'O';
+    } 
+
+
+    //horizontals
+    else if(one == true && two == true && three == false) {
+      Main.yeet[1][3] = 'O';
+    }
+
+    else if(one == false && two == true && three == true) {
+      Main.yeet[1][1] = 'O';
+    }
+
+    else if(one == true && two == false && three == true) {
+      Main.yeet[1][2] = 'O';
+    }
+
+    else if(four == true && five == true && six == false) {
+      Main.yeet[2][3] = 'O';
+    }
+
+    else if(four == false && five == true && six == true) {
+      Main.yeet[2][1] = 'O';
+    }
+
+    else if(four == true && five == false && six == true) {
+      Main.yeet[2][2] = 'O';
+    }
+
+    else if(seven == true && eight == true && nine == false) {
+      Main.yeet[3][3] = 'O';
+    }
+
+    else if(seven == false && eight == true && nine == true) {
+      Main.yeet[3][1] = 'O';
+    }
+
+    else if(seven == true && eight == false && nine == true) {
+      Main.yeet[3][2] = 'O';
+    } 
+
+    //verticals
+    else if(one == true && four == true && seven == false) {
+      Main.yeet[3][1] = 'O';
+    }
+
+    else if(one == false && four == true && seven == true) {
+      Main.yeet[1][1] = 'O';
+    }
+
+    else if(one == true && four == false && seven == true) {
+      Main.yeet[2][1] = 'O';
+    }
+
+    else if(two == true && five == true && eight == false) {
+      Main.yeet[3][2] = 'O';
+    }
+
+    else if(two == false && five == true && eight == true) {
+      Main.yeet[1][2] = 'O';
+    }
+
+    else if(two == true && five == false && eight == true) {
+      Main.yeet[2][2] = 'O';
+    }
+
+    else if(three == true && six == true && nine == false) {
+      Main.yeet[3][3] = 'O';
+    }
+
+    else if(three == false && six == true && nine == true) {
+      Main.yeet[1][3] = 'O';
+    }
+    
+    else if(three == true && six == false && nine == true) {
+      Main.yeet[2][3] = 'O';
+    } else {
+      for(;;) {
+        int row = (int) ((Math.random()*3)+1);
+        int column = (int) ((Math.random()*3)+1);
+        if(Main.yeet[row][column] != 'X') {
+          Main.yeet[row][column] = 'O';
+          break;
+        }
+      }
+    }
+
+
+  }
 }
+
+
+           
