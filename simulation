@@ -1,1 +1,88 @@
+import java.util.Scanner;
+	 
+class player {
+	 void move() {
+	   Scanner input = new Scanner(System.in);
+	   int number = input.nextInt();
+	 
+	   if(number == 1) {
+	     Execute.grid[0][0] = 'X';
+	   }
+	   if(number == 2) {
+	     Execute.grid[0][1] = 'X';
+	   }
+	   if(number == 3) {
+	     Execute.grid[0][2] = 'X';
+	   }
+	   if(number == 4) {
+	     Execute.grid[1][0] = 'X';
+	   }
+	   if(number == 5) {
+	     Execute.grid[1][1] = 'X';
+	   }
+	   if(number == 6) {
+	     Execute.grid[1][2] = 'X';
+	   }
+	   if(number == 7) {
+	     Execute.grid[2][0] = 'X';
+	   }
+	   if(number == 8) {
+	     Execute.grid[2][1] = 'X';
+	   }
+	   if(number == 9) {
+	     Execute.grid[2][2] = 'X';
+	   }
+	   
+	 }
+	}
+	
+  
+  public class Execute {
+	 
+	  static char[][] grid = new char[][] {
+	 {'-', '-', '-'},
+	 {'-', '-', '-'},
+	 {'-', '-', '-'},
+	 };
+	 
+	 public static void main(String[] args) {
+	   player y = new player();
+	   Opponent o = new Opponent();
+	  
+	   for(;;) {
+	     System.out.println("enter a number ");
+	     y.move();
+	     o.xChecker();
+	 
+	     for(int i = 0; i < 3; i++) {
+	       for(int j = 0; j < 3; j++) {
+	         System.out.print(Execute.grid[i][j]);
+	       }
+	       System.out.println();
+	     }
+	   }
+	 }
+	}
+
+
+
+class Opponent extends player {
+	 int row = (int) (Math.random()*3);
+	 int column = (int) (Math.random()*3);
+	 void xChecker() {
+	   for(;;) {
+	     if(Execute.grid[row][column] == 'X') {
+	       row = (int) (Math.random()*3);
+	       column = (int) (Math.random()*3);
+	      } else {
+	        Execute.grid[row][column] = 'O';
+	        row = (int) (Math.random()*3);
+	        column = (int) (Math.random()*3);
+	        break;
+	      }
+	     }
+	 }
+	 
+	}
+	
 
